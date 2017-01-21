@@ -1,0 +1,22 @@
+.special-offer {
+  &:hover {
+    text-decoration: none;
+
+    .offer-image {
+      background-size: 120% auto;
+    }
+  }
+
+  p {
+    max-height: 10em;
+    overflow: hidden;
+  }
+
+  .offer-image {
+    height: 160px;
+    width: 100%;
+    background-position: center;
+    background-size: 100% auto;
+    transition: all 0.3s;
+  }
+}
