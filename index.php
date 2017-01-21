@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<?php
-?>
+<?php session_start(); ?>
     <head>
 
         <!--
@@ -165,23 +164,19 @@
                 </div>
 
 
-                <div class="row">
-
-                </div>
-
                 <div class="row form-container">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 col-lg-8">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h2 class="panel-title">Reserve a room in one of our beautifull hotels</h2>
                             </div>
                             <div class="panel-body">
                                 <form>
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <label>City</label>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <select>
                                             <option>New York</option>
                                             <option>Los Angeles</option>
@@ -192,27 +187,27 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <label>Check in date</label>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <input type="date" />
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <label>Check out date</label>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <input type="date" />
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <label>Room</label>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <select>
                                             <option>1 room, 1 bed</option>
                                             <option>1 room, 2 beds</option>
@@ -223,11 +218,11 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <label>Email</label>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 col-lg-2">
+                                    <div class="col-xs-12 col-md-3">
                                         <input type="email"/>
                                     </div>
 
@@ -250,6 +245,70 @@
                             </div>
                         </div>
                     </div>
+
+                    <?php if(isset($_SESSION['username'])){; ?>
+                    <div class="col-xs-12 col-lg-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Logged in user</h3>
+                            </div>
+                            <div class="panel-body" style="min-height: 350px;">
+                                <h3><?php echo $_SESSION['username']; ?></h3>
+                                <a href="logout.php">Log out</a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } else { ?>
+                    <div class="col-xs-12 col-lg-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-body" style="min-height: 350px;">
+                                <ul class="nav nav-pills" role="tablist">
+                                    <li role="sign-in-form" class="active"><a href="#">Sign in</a></li>
+                                    <li role="sign-up-form"><a href="#">Sign up</a></li>
+                                </ul>
+                                <div class="registration-forms sign-in-form">
+                                    <form id="login-form">
+                                        <br/>
+                                        <label>Email</label>
+                                        <br/>
+                                        <input type="email" name="email"/>
+
+                                        <label>Password</label>
+                                        <br/>
+                                        <input type="password" name="password"/>
+
+                                        <div class="right-align" style="margin-top: 10px;">
+                                            <input type="submit" class="btn btn-success" value="Sign in"/>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="registration-forms sign-up-form" style="display: none;">
+                                    <form id="register-form"><br/>
+
+                                        <label>Email</label>
+                                        <input type="email" name="email"/>
+
+                                        <label>First name</label>
+                                        <input type="text" name="firstName"/>
+
+                                        <label>Last name</label>
+                                        <input type="text" name="lastName"/>
+
+                                        <label>Password</label>
+                                        <input type="password" name="password"/>
+
+                                        <label>Confirm assword</label>
+                                        <input type="password" name="confirmPassword"/>
+
+                                        <div class="right-align" style="margin-top: 10px;">
+                                            <input type="submit" class="btn btn-success" value="Register"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
                 </div>
 
 
