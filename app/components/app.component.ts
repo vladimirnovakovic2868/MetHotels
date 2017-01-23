@@ -8,6 +8,8 @@ import { HomepageUserInfoComponent } from './homepage_user_info.component';
 import { HomepageAuthComponent } from './homepage_auth.component';
 import { ReserveRoomComponent } from './reserve_room.component';
 import { RoomFilterComponent } from './room_filter.component';
+import { AddHotelComponent } from './add_hotel.component';
+import { AddRoomComponent } from './add_room.component';
 
 @Component({
     selector: 'met-hotels',
@@ -18,7 +20,9 @@ import { RoomFilterComponent } from './room_filter.component';
         HomepageUserInfoComponent,
         HomepageAuthComponent,
         ReserveRoomComponent,
-        RoomFilterComponent
+        RoomFilterComponent,
+        AddHotelComponent,
+        AddRoomComponent
     ],
     templateUrl: '/app/template/app.html'
 })

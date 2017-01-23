@@ -9,13 +9,14 @@ function findRoomByNumber($number){
     $query->bind_param('s',$number);
     $query->execute();
     $query->store_result();
-    $query->bind_result($id, $number, $size, $bed_number);
+    $query->bind_result($id, $hotelId, $number, $size, $bed_number);
 
     $rooms = [];
 
     while ($query->fetch()) {
         $rooms[] = Array(
             "id" => $id,
+            "hotelId" => $hotelId,
             "bedNumber" => $bed_number,
             "size" => $size,
             "number" => $number
@@ -34,13 +35,14 @@ function findRoomBySize($number){
     $query->bind_param('s',$number);
     $query->execute();
     $query->store_result();
-    $query->bind_result($id, $number, $size, $bed_number);
+    $query->bind_result($id, $hotelId, $number, $size, $bed_number);
 
     $rooms = [];
 
     while ($query->fetch()) {
         $rooms[] = Array(
             "id" => $id,
+            "hotelId" => $hotelId,
             "bedNumber" => $bed_number,
             "size" => $size,
             "number" => $number
@@ -59,13 +61,14 @@ function findRoomByNumberOfBeds($number){
     $query->bind_param('s',$number);
     $query->execute();
     $query->store_result();
-    $query->bind_result($id, $number, $size, $bed_number);
+    $query->bind_result($id, $hotelId, $number, $size, $bed_number);
 
     $rooms = [];
 
     while ($query->fetch()) {
         $rooms[] = Array(
             "id" => $id,
+            "hotelId" => $hotelId,
             "bedNumber" => $bed_number,
             "size" => $size,
             "number" => $number
@@ -83,13 +86,14 @@ function findRoomByNumberOfBedsAndSize($beds, $size){
     $query->bind_param('ss',$beds,$size);
     $query->execute();
     $query->store_result();
-    $query->bind_result($id, $number, $size, $bed_number);
+    $query->bind_result($id, $hotelId, $number, $size, $bed_number);
 
     $rooms = [];
 
     while ($query->fetch()) {
         $rooms[] = Array(
             "id" => $id,
+            "hotelId" => $hotelId,
             "bedNumber" => $bed_number,
             "size" => $size,
             "number" => $number
@@ -107,13 +111,14 @@ function findAllRooms(){
 //    $query->bind_param('ss',$beds,$size);
     $query->execute();
     $query->store_result();
-    $query->bind_result($id, $number, $size, $bed_number);
+    $query->bind_result($id, $hotelId, $number, $size, $bed_number);
 
     $rooms = [];
 
     while ($query->fetch()) {
         $rooms[] = Array(
             "id" => $id,
+            "hotelId" => $hotelId,
             "bedNumber" => $bed_number,
             "size" => $size,
             "number" => $number
@@ -124,4 +129,15 @@ function findAllRooms(){
     $query->close();
 }
 
-?>
+function addRoom($hotel, $roomNumber, $roomSize, $bedNumber)
+{
+    $insert = "INSERT INTO rooms (hotel_id, number, size, bed_number) VALUES (?,?,?,?)";
+    global $conn;
+
+    $query = $conn->prepare($insert);
+    $query->bind_param('ssss', $hotel, $roomNumber, $roomSize, $bedNumber);
+    $query->execute();
+
+    $query->close();
+    return true;
+}

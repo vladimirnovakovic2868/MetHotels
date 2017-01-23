@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', './navbar.component', './locations_section.component', './special_offers.component', './homepage_user_info.component', './homepage_auth.component', './reserve_room.component', './room_filter.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', './navbar.component', './locations_section.component', './special_offers.component', './homepage_user_info.component', './homepage_auth.component', './reserve_room.component', './room_filter.component', './add_hotel.component', './add_room.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', './navbar.componen
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, navbar_component_1, locations_section_component_1, special_offers_component_1, homepage_user_info_component_1, homepage_auth_component_1, reserve_room_component_1, room_filter_component_1;
+    var core_1, http_1, navbar_component_1, locations_section_component_1, special_offers_component_1, homepage_user_info_component_1, homepage_auth_component_1, reserve_room_component_1, room_filter_component_1, add_hotel_component_1, add_room_component_1;
     var AppComponent;
     return {
         setters:[
@@ -41,6 +41,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', './navbar.componen
             },
             function (room_filter_component_1_1) {
                 room_filter_component_1 = room_filter_component_1_1;
+            },
+            function (add_hotel_component_1_1) {
+                add_hotel_component_1 = add_hotel_component_1_1;
+            },
+            function (add_room_component_1_1) {
+                add_room_component_1 = add_room_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -60,7 +66,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', './navbar.componen
                             homepage_user_info_component_1.HomepageUserInfoComponent,
                             homepage_auth_component_1.HomepageAuthComponent,
                             reserve_room_component_1.ReserveRoomComponent,
-                            room_filter_component_1.RoomFilterComponent
+                            room_filter_component_1.RoomFilterComponent,
+                            add_hotel_component_1.AddHotelComponent,
+                            add_room_component_1.AddRoomComponent
                         ],
                         templateUrl: '/app/template/app.html'
                     }), 

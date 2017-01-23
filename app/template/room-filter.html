@@ -1,67 +1,60 @@
-<div class="col-xs-12 col-lg-6 room-filter">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h2 class="panel-title">Reserve a room in one of our beautifull hotels</h2>
-        </div>
-        <div class="panel-body">
-            <form (ngSubmit)="submit()">
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
-                        <label>Number of beds</label>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6">
-                        <select [(ngModel)]="filter.beds">
-                            <option>Any</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
-                        <label>Size</label>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6">
-                        <select [(ngModel)]="filter.size">
-                            <option>Any</option>
-                            <option>20</option>
-                            <option>25</option>
-                            <option>30</option>
-                            <option>35</option>
-                            <option>40</option>
-                            <option>45</option>
-                        </select>
-                    </div>
-                </div>
-
-            </form>
-        </div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Reserve a room in one of our beautifull hotels</h2>
     </div>
-</div>
+    <div class="panel-body">
+        <form (ngSubmit)="submit()">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <label>Number of beds</label>
+                </div>
 
-<div class="col-xs-12 col-lg-6 room-filter-table">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h2 class="panel-title">Reserve a room in one of our beautifull hotels</h2>
-        </div>
-        <div class="panel-body">
-            <table>
-                <thead>
-                    <td>Room number</td>
-                    <td>Size</td>
-                    <td>Beds</td>
-                </thead>
-                <tr *ngFor="#room of rooms | RoomPipe: filter.size: filter.beds">
-                    <td>{{room.number}}</td>
-                    <td>{{room.size}}</td>
-                    <td>{{room.bedNumber}}</td>
-                </tr>
-            </table>
-        </div>
+                <div class="col-xs-12 col-md-6">
+                    <select [(ngModel)]="filter.beds">
+                        <option>Any</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <label>Size</label>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                    <select [(ngModel)]="filter.size">
+                        <option>Any</option>
+                        <option>20</option>
+                        <option>25</option>
+                        <option>30</option>
+                        <option>35</option>
+                        <option>40</option>
+                        <option>45</option>
+                    </select>
+                </div>
+            </div>
+
+        </form>
+
+        <table>
+            <thead>
+                <td>Hotel name</td>
+                <td>City</td>
+                <td>Room number</td>
+                <td>Size</td>
+                <td>Beds</td>
+            </thead>
+            <tr *ngFor="#room of rooms | RoomPipe: filter.size: filter.beds">
+                <td>{{room.hotel.name}}</td>
+                <td>{{room.hotel.city}}</td>
+                <td>{{room.number}}</td>
+                <td>{{room.size}}</td>
+                <td>{{room.bedNumber}}</td>
+            </tr>
+        </table>
     </div>
 </div>

@@ -5,7 +5,13 @@
         <locations-section></locations-section>
         <div class="row form-container">
 
-            <reserve-room></reserve-room>
+            <div class="col-xs-12 col-lg-8 room-filter">
+                <room-filter></room-filter>
+            </div>
+
+            <!--
+                <reserve-room></reserve-room>
+            -->
 
             <homepage-user-info *ngIf="user!=null"></homepage-user-info>
 
@@ -13,7 +19,10 @@
 
         </div>
         <special-offers></special-offers>
-        <room-filter></room-filter>
+        <div class="row">
+            <add-hotel-form></add-hotel-form>
+            <add-room-form></add-room-form>
+        </div>
     </div>
 </main>
 <!--end main-->

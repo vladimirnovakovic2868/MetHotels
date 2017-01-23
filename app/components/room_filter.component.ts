@@ -17,32 +17,38 @@ export class RoomFilterComponent {
         size: String,
         beds: String
     };
-    public config: Object;
+    public config: {
+        apiBaseUrl: String
+    };
     public rooms: Array;
+    public hotels: Array;
 
     constructor(http: Http){
-        // console.log('navbar')
         this.filter = {
             size: "Any",
             beds: "Any"
         };
 
-        // console.log(config);
-
         http.get('/app/data/config.json')
             .map(config => config.json())
             .flatMap((config) => {
                 this.config = config;
-                return http.post(config.apiBaseUrl + "services/rooms.php");
+                return http.post(config.apiBaseUrl + "services/hotels.php", "");
+            })
+            .map(hotels => hotels.json())
+            .flatMap(hotels => {
+                this.hotels = hotels;
+                return http.post(this.config.apiBaseUrl + "services/rooms.php", "");
             })
             .map(rooms => rooms.json())
-            .subscribe(rooms => {
-                this.rooms = rooms;
-                console.log(rooms)
+            .subscribe((rooms) => {
+                var newRoomArray = [];
+                var hotelArray = this.hotels;
+                rooms.forEach(function(room){
+                    room['hotel'] = hotelArray.filter(hotel => hotel.id == room.hotelId)[0];
+                    newRoomArray.push(room);
+                });
+                this.rooms = newRoomArray;
             });
-    }
-
-    submit() {
-        console.log('submit filter form', this.filter)
     }
 }

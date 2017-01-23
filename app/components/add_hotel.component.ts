@@ -3,26 +3,32 @@ import 'rxjs/Rx';
 import { Http, Headers } from "angular2/http";
 
 @Component({
-    selector: 'sign-in-form',
-    templateUrl: '/app/template/sign-in-form.html'
+    selector: 'add-hotel-form',
+    templateUrl: '/app/template/add-hotel-form.html'
 })
 
-export class SignInFormComponent {
+export class AddHotelComponent {
     public config: {
         apiBaseUrl: String
     };
     public http: any;
-    public user: {
-        email: String;
-        password: String;
+    public hotel: {
+        name: String;
+        city: String;
+        stars: Number;
+        description: String;
+        image: String;
     };
 
     constructor(http: Http){
         this.http = http;
 
-        this.user = {
-            email: '',
-            password: ''
+        this.hotel = {
+            name: '',
+            city: '',
+            stars: 0,
+            description: '',
+            image: '',
         };
 
         http.get('/app/data/config.json')
@@ -38,12 +44,12 @@ export class SignInFormComponent {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        this.http.post(this.config.apiBaseUrl + "login.php",
-            JSON.stringify(this.user), {
+        this.http.post(this.config.apiBaseUrl + "services/hotels.php",
+            JSON.stringify(this.hotel), {
                 headers: headers.append('Content-Type', 'application/json')
             }).subscribe(function (data) {
                 console.log('received response', data)
                 // set global user
-        });
+            });
     }
 }

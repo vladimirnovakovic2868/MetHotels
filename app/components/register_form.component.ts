@@ -11,12 +11,13 @@ export class RegisterFormComponent {
     public http: any;
     public headers: any;
     public config: any;
-    public registerUser: Object;
-    public registerUser.email: String;
-    public registerUser.firstName: String;
-    public registerUser.lastName: String;
-    public registerUser.password: String;
-    public registerUser.confirmPassword: String;
+    public registerUser: {
+        email: String,
+        firstName: String,
+        lastName: String,
+        password: String,
+        confirmPassword: String
+    };
 
     constructor(http: Http){
         this.http = http;

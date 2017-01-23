@@ -35,27 +35,32 @@ System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/mergeMap', "angu
             RoomFilterComponent = (function () {
                 function RoomFilterComponent(http) {
                     var _this = this;
-                    // console.log('navbar')
                     this.filter = {
                         size: "Any",
                         beds: "Any"
                     };
-                    // console.log(config);
                     http.get('/app/data/config.json')
                         .map(function (config) { return config.json(); })
                         .flatMap(function (config) {
                         _this.config = config;
-                        return http.post(config.apiBaseUrl + "services/rooms.php");
+                        return http.post(config.apiBaseUrl + "services/hotels.php", "");
+                    })
+                        .map(function (hotels) { return hotels.json(); })
+                        .flatMap(function (hotels) {
+                        _this.hotels = hotels;
+                        return http.post(_this.config.apiBaseUrl + "services/rooms.php", "");
                     })
                         .map(function (rooms) { return rooms.json(); })
                         .subscribe(function (rooms) {
-                        _this.rooms = rooms;
-                        console.log(rooms);
+                        var newRoomArray = [];
+                        var hotelArray = _this.hotels;
+                        rooms.forEach(function (room) {
+                            room['hotel'] = hotelArray.filter(function (hotel) { return hotel.id == room.hotelId; })[0];
+                            newRoomArray.push(room);
+                        });
+                        _this.rooms = newRoomArray;
                     });
                 }
-                RoomFilterComponent.prototype.submit = function () {
-                    console.log('submit filter form', this.filter);
-                };
                 RoomFilterComponent = __decorate([
                     core_1.Component({
                         selector: 'room-filter',
