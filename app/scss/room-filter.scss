@@ -1,0 +1,19 @@
+.room-filter-table {
+    table {
+        width: 100%;
+
+        tr:nth-child(odd) {
+            background-color: #efefef;
+        }
+
+        thead {
+            font-weight: bold;
+        }
+    }
+}
+
+.room-filter {
+    select {
+        width: 100%;
+    }
+}

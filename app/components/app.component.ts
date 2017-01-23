@@ -7,6 +7,7 @@ import { SpecialOffersComponent } from './special_offers.component';
 import { HomepageUserInfoComponent } from './homepage_user_info.component';
 import { HomepageAuthComponent } from './homepage_auth.component';
 import { ReserveRoomComponent } from './reserve_room.component';
+import { RoomFilterComponent } from './room_filter.component';
 
 @Component({
     selector: 'met-hotels',
@@ -16,7 +17,8 @@ import { ReserveRoomComponent } from './reserve_room.component';
         SpecialOffersComponent,
         HomepageUserInfoComponent,
         HomepageAuthComponent,
-        ReserveRoomComponent
+        ReserveRoomComponent,
+        RoomFilterComponent
     ],
     templateUrl: '/app/template/app.html'
 })

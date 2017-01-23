@@ -98,6 +98,16 @@
 .form-container .col-xs-12 {
   margin-bottom: 10px; }
 
+.room-filter-table table {
+  width: 100%; }
+  .room-filter-table table tr:nth-child(odd) {
+    background-color: #efefef; }
+  .room-filter-table table thead {
+    font-weight: bold; }
+
+.room-filter select {
+  width: 100%; }
+
 /* General .....................*/
 body {
   background-color: #e8e8ef !important; }
