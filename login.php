@@ -2,10 +2,18 @@
 session_start();
 include('functions/user.php');
 
-if(isset($_POST['email']) && isset($_POST['password'])){
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
+$json = file_get_contents('php://input');
+$obj = json_decode($json, true);
+print_r($obj);
+
+if(isset($obj['email']) && isset($obj['password'])){
+
+    $email = $obj['email'];
+    $password = $obj['password'];
 
     $userChecked = checkUser($email, $password);
 

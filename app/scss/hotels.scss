@@ -1,0 +1,101 @@
+.col-md-8 .hotel-details,
+.col-md-4 .hotel-details {
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+
+    &:hover {
+        .hotel-info {
+            max-height: 100%;
+            height: 100%;
+
+            p {
+                opacity: 1;
+            }
+        }
+
+        .hotel-stars {
+            opacity: 1;
+        }
+    }
+}
+
+.col-md-8 .hotel-details {
+    height: 420px;
+
+    .hotel-info {
+        max-height: 15%;
+    }
+}
+
+.col-md-4 .hotel-details {
+    height: 200px;
+
+    .hotel-info p {
+        max-height: 7em;
+        overflow: hidden;
+    }
+}
+
+.hotel-info {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+
+    max-height: 30%;
+    top: auto;
+    transition: all, 0.25s;
+
+    h3,
+    h5 {
+        margin: 0
+    }
+
+    p {
+        opacity: 0;
+        margin-top: 20px;
+    }
+}
+
+.hotel-stars {
+    color: #ffff1e;
+    text-decoration: none;
+    padding: 5px;
+    text-align: right;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    opacity: 0.5;
+    transition: all 0.25s;
+}
+
+@media only screen and (max-width: 990px) {
+    .col-xs-12 .hotel-details {
+        height: 300px;
+
+        .hotel-info {
+            max-height: 20%;
+
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 460px) {
+    .col-xs-12 .hotel-details {
+        height: 200px;
+
+        .hotel-info {
+            max-height: 30%;
+        }
+    }
+}

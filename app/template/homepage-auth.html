@@ -1,0 +1,18 @@
+<div class="col-xs-12 col-lg-4">
+    <div class="panel panel-primary">
+        <div class="panel-body" style="min-height: 350px;">
+            <ul class="nav nav-pills" role="tablist">
+                <li role="sign-in-form" [class.active]="isSignInActive" (click)="openSignIn($event)"><a href="#">Sign in</a></li>
+                <li role="sign-up-form" [class.active]="isSignInActive!=true"><a href="#" (click)="openRegister($event)" >Sign up</a></li>
+            </ul>
+
+            <div class="registration-forms sign-in-form" *ngIf="isSignInActive">
+                <sign-in-form></sign-in-form>
+            </div>
+
+            <div class="registration-forms sign-up-form" *ngIf="isSignInActive!=true">
+                <register-form></register-form>
+            </div>
+        </div>
+    </div>
+</div>

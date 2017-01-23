@@ -1,0 +1,12 @@
+<form id="login-form" (ngSubmit)="onSubmit($event)"><br/>
+
+    <label>Email</label>
+    <input type="email" name="email" [(ngModel)]="user.email"/>
+
+    <label>Password</label>
+    <input type="password" name="password" [(ngModel)]="user.password"/>
+
+    <div class="right-align" style="margin-top: 10px;">
+        <input type="submit" class="btn btn-success" value="Sign in"/>
+    </div>
+</form>

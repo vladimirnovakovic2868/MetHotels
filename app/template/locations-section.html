@@ -1,0 +1,105 @@
+<div class="row" *ngIf="locations!=null">
+    <div class="col-xs-12">
+        <h2>Pick a location</h2>
+    </div>
+    <div class="col-xs-12 col-md-8">
+        <a href="#">
+            <div class="hotel-details" style="background-image: url('{{config.apiBaseUrl + locations[0].image}}');" >
+                <div class="hotel-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="hotel-info">
+                    <h5>{{locations[0].city}}</h5>
+                    <h3>{{locations[0].name}}</h3>
+                    <p>{{locations[0].description}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <a href="#">
+            <div class="hotel-details" style="background-image: url('{{config.apiBaseUrl + locations[1].image}}');" >
+                <div class="hotel-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="hotel-info">
+                    <h5>{{locations[1].city}}</h5>
+                    <h3>{{locations[1].name}}</h3>
+                    <p>{{locations[1].description}}</p>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="hotel-details" style="background-image: url('{{config.apiBaseUrl + locations[2].image}}');" >
+                <div class="hotel-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="hotel-info">
+                    <h5>{{locations[2].city}}</h5>
+                    <h3>{{locations[2].name}}</h3>
+                    <p>{{locations[2].description}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row" *ngIf="locations!=null">
+    <div class="col-xs-12 col-md-4">
+        <a href="#">
+            <div class="hotel-details" style="background-image: url('{{config.apiBaseUrl + locations[3].image}}');" >
+                <div class="hotel-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="hotel-info">
+                    <h5>{{locations[3].city}}</h5>
+                    <h3>{{locations[3].name}}</h3>
+                    <p>{{locations[3].description}}</p>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="hotel-details" style="background-image: url('{{config.apiBaseUrl + locations[4].image}}');" >
+                <div class="hotel-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="hotel-info">
+                    <h5>{{locations[4].city}}</h5>
+                    <h3>{{locations[4].name}}</h3>
+                    <p>{{locations[4].description}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-12 col-md-8">
+        <a href="#">
+            <div class="hotel-details" style="background-image: url('{{config.apiBaseUrl + locations[5].image}}');" >
+                <div class="hotel-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="hotel-info">
+                    <h5>{{locations[5].city}}</h5>
+                    <h3>{{locations[5].name}}</h3>
+                    <p>{{locations[5].description}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+

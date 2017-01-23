@@ -1,0 +1,24 @@
+<navbar></navbar>
+<!--main-->
+<main>
+    <div class="container container-fluid">
+        <locations-section></locations-section>
+        <div class="row form-container">
+
+            <reserve-room></reserve-room>
+
+            <homepage-user-info *ngIf="user!=null"></homepage-user-info>
+
+            <homepage-auth *ngIf="user===null"></homepage-auth>
+
+        </div>
+        <special-offers></special-offers>
+    </div>
+</main>
+<!--end main-->
+
+<!--footer-->
+<footer>
+
+</footer>
+<!--end footer-->

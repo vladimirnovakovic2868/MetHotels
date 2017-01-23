@@ -1,0 +1,33 @@
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
+@import "./hotels";
+@import "./special-offer";
+@import "./reservations";
+
+/* General .....................*/
+body {
+    background-color: #e8e8ef!important;
+}
+
+img {
+    max-width: 100%;
+}
+
+main {
+    padding-top: 100px;
+}
+
+.right-align {
+    text-align: right;
+}
+
+@media only screen and (max-width: 990px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 460px) {
+
+}
