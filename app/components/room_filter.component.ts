@@ -44,11 +44,14 @@ export class RoomFilterComponent {
             .subscribe((rooms) => {
                 var newRoomArray = [];
                 var hotelArray = this.hotels;
+
                 rooms.forEach(function(room){
                     room['hotel'] = hotelArray.filter(hotel => hotel.id == room.hotelId)[0];
                     newRoomArray.push(room);
                 });
+
                 this.rooms = newRoomArray;
+                $('table').DataTable();
             });
     }
 }

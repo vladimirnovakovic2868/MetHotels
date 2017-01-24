@@ -59,6 +59,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/mergeMap', "angu
                             newRoomArray.push(room);
                         });
                         _this.rooms = newRoomArray;
+                        $('table').DataTable();
                     });
                 }
                 RoomFilterComponent = __decorate([
