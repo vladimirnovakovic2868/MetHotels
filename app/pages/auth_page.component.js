@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx', "angular2/http"], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', "angular2/http", 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,35 +10,45 @@ System.register(['angular2/core', 'rxjs/Rx', "angular2/http"], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
-    var SignInFormComponent;
+    var core_1, router_1, http_1;
+    var AuthPageComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (_1) {},
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (http_1_1) {
                 http_1 = http_1_1;
-            }],
+            },
+            function (_1) {}],
         execute: function() {
-            SignInFormComponent = (function () {
-                function SignInFormComponent(http) {
+            AuthPageComponent = (function () {
+                function AuthPageComponent(http, router) {
                     var _this = this;
                     this.http = http;
+                    this.router = router;
                     this.user = {
                         email: '',
                         password: ''
                     };
-                    http.get('/app/data/config.json')
-                        .map(function (config) { return config.json(); })
-                        .subscribe(function (config) { return _this.config = config; });
+                    if (localStorage.getItem('token') != null) {
+                        this.router.parent.navigate(['./HomePage']);
+                    }
+                    else {
+                        http.get('/app/data/config.json')
+                            .map(function (config) { return config.json(); })
+                            .subscribe(function (config) { return _this.config = config; });
+                    }
                 }
-                SignInFormComponent.prototype.onSubmit = function () {
+                AuthPageComponent.prototype.onSubmit = function () {
                     var headers = new http_1.Headers();
                     headers.append('Content-Type', 'application/json');
+                    var router = this.router;
                     this.http.post(this.config.apiBaseUrl + "services/login.php", JSON.stringify(this.user), {
-                        headers: headers.append('Content-Type', 'application/json')
+                        headers: headers
                     })
                         .map(function (data) { return data.json(); })
                         .subscribe(function (data) {
@@ -46,24 +56,27 @@ System.register(['angular2/core', 'rxjs/Rx', "angular2/http"], function(exports_
                         if (data.error == null) {
                             localStorage.setItem('token', data.token);
                             localStorage.setItem('username', data.username);
-                            this.router.navigate(['./HomePage']);
+                            router.parent.navigate(['./HomePage']);
                         }
                         else {
                             alert(data.error);
                         }
                     });
                 };
-                SignInFormComponent = __decorate([
+                AuthPageComponent = __decorate([
                     core_1.Component({
-                        selector: 'sign-in-form',
-                        templateUrl: '/app/template/sign-in-form.html'
+                        selector: 'auth-page',
+                        directives: [
+                            router_1.ROUTER_DIRECTIVES
+                        ],
+                        templateUrl: '/app/template/auth-page.html'
                     }), 
-                    __metadata('design:paramtypes', [http_1.Http])
-                ], SignInFormComponent);
-                return SignInFormComponent;
+                    __metadata('design:paramtypes', [http_1.Http, router_1.Router])
+                ], AuthPageComponent);
+                return AuthPageComponent;
             }());
-            exports_1("SignInFormComponent", SignInFormComponent);
+            exports_1("AuthPageComponent", AuthPageComponent);
         }
     }
 });
-//# sourceMappingURL=sign_in_form.component.js.map
+//# sourceMappingURL=auth_page.component.js.map

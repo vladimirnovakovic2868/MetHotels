@@ -1,7 +1,8 @@
 <?php
-include('functions/user.php');
+include('../functions/user.php');
 
 header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: POST');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 $json = file_get_contents('php://input');
@@ -14,13 +15,7 @@ if(isset($obj['email']) && isset($obj['password']) && isset($obj['firstName']) &
     $lastName = $obj['lastName'];
     $password = $obj['password'];
 
-    $userAdded = addUser($email, $firstName, $lastName, $password);
-
-    if($userAdded){
-        echo "success";
-    }else {
-        echo "User already exists";
-    }
+    echo addUser($email, $firstName, $lastName, $password);
 }else {
     echo "error";
 }

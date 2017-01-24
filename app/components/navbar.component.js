@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', 'rxjs/Rx', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,22 +10,35 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, router_1;
     var NavbarComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (_1) {}],
+            function (_1) {},
+            function (router_1_1) {
+                router_1 = router_1_1;
+            }],
         execute: function() {
             NavbarComponent = (function () {
                 function NavbarComponent() {
-                    // console.log('navbar')
+                    if (localStorage.getItem('username') != null) {
+                        this.username = localStorage.getItem('username');
+                    }
                 }
+                NavbarComponent.prototype.logout = function (event) {
+                    event.preventDefault();
+                    console.log('logout');
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("username");
+                    // this.router.navigate(['./HomePage']);
+                };
                 NavbarComponent = __decorate([
                     core_1.Component({
                         selector: 'navbar',
+                        directives: [router_1.RouterLink],
                         templateUrl: '/app/template/navbar.html'
                     }), 
                     __metadata('design:paramtypes', [])

@@ -1,28 +1,39 @@
-<navbar></navbar>
+<!--navigation-->
+<nav class="navbar navbar-inverse  navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" [routerLink]="['HomePage']">MetHotels</a>
+        </div>
+        <div id='navbar' class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a [routerLink]="['HomePage']">Home</a></li>
+                <li><a [routerLink]="['EditHotelsPage']" *ngIf="username!=null">Edit hotels</a></li>
+                <li><a [routerLink]="['FindRoomPage']">Rooms</a></li>
+                <!--
+                <li><a routerLink="/about">About</a></li>
+                <li><a routerLink="/contact">Contact</a></li>
+                -->
+            </ul>
+            <a class="navbar-brand pull-right" [routerLink]="['RegisterPage']" *ngIf="username==null">Register</a>
+            <a class="navbar-brand pull-right" [routerLink]="['SignInPage']" *ngIf="username==null">Sign in</a>
+            <a href="#" (click)="logout($event)" class="navbar-brand pull-right" *ngIf="username!=null">Logout {{username}}</a>
+        </div>
+    </div>
+</nav>
+<!--end navigation-->
+
 <!--main-->
 <main>
     <div class="container container-fluid">
-        <locations-section></locations-section>
-        <div class="row form-container">
 
-            <div class="col-xs-12 col-lg-8 room-filter">
-                <room-filter></room-filter>
-            </div>
+        <router-outlet></router-outlet>
 
-            <!--
-                <reserve-room></reserve-room>
-            -->
-
-            <homepage-user-info *ngIf="user!=null"></homepage-user-info>
-
-            <homepage-auth *ngIf="user===null"></homepage-auth>
-
-        </div>
-        <special-offers></special-offers>
-        <div class="row">
-            <add-hotel-form></add-hotel-form>
-            <add-room-form></add-room-form>
-        </div>
     </div>
 </main>
 <!--end main-->

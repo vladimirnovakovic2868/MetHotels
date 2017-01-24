@@ -1,0 +1,36 @@
+<div class="row form-container">
+    <div class="col-xs-12 col-lg-4 col-lg-offset-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">Register page</h2>
+            </div>
+            <div class="panel-body" style="min-height: 350px;">
+
+                <div class="registration-forms sign-in-form">
+                    <form id="register-form" (ngSubmit)="onSubmit()"><br/>
+
+                        <label>Email</label>
+                        <input type="email" name="email" [(ngModel)]="registerUser.email"/>
+
+                        <label>First name</label>
+                        <input type="text" name="firstName" [(ngModel)]="registerUser.firstName"/>
+
+                        <label>Last name</label>
+                        <input type="text" name="lastName" [(ngModel)]="registerUser.lastName"/>
+
+                        <label>Password</label>
+                        <input type="password" name="password" [(ngModel)]="registerUser.password"/>
+
+                        <label>Confirm assword</label>
+                        <input type="password" name="confirmPassword" [(ngModel)]="registerUser.confirmPassword"/>
+
+                        <div class="right-align" style="margin-top: 10px;">
+                            <input type="submit" class="btn btn-success" value="Register"/>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

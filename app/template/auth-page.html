@@ -1,0 +1,28 @@
+<div class="row form-container">
+    <div class="col-xs-12 col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">Sign in</h2>
+            </div>
+            <div class="panel-body" style="min-height: 350px;">
+
+                <div class="registration-forms sign-in-form">
+                    <!--<sign-in-form></sign-in-form>-->
+                    <form id="login-form" (ngSubmit)="onSubmit($event)"><br/>
+
+                        <label>Email</label>
+                        <input type="email" name="email" [(ngModel)]="user.email"/>
+
+                        <label>Password</label>
+                        <input type="password" name="password" [(ngModel)]="user.password"/>
+
+                        <div class="right-align" style="margin-top: 10px;">
+                            <input type="submit" class="btn btn-success" value="Sign in"/>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
