@@ -141,3 +141,29 @@ function addRoom($hotel, $roomNumber, $roomSize, $bedNumber)
     $query->close();
     return true;
 }
+
+function updateRoom($id, $hotel, $roomNumber, $roomSize, $bedNumber)
+{
+    $insert = "UPDATE rooms SET hotel_id=?, number=?, size=?, bed_number=? WHERE id=?";
+    global $conn;
+
+    $query = $conn->prepare($insert);
+    $query->bind_param('ssssi', $hotel, $roomNumber, $roomSize, $bedNumber, $id);
+    $query->execute();
+
+    $query->close();
+    return true;
+}
+
+function deleteRoom($id)
+{
+    $insert = "DELETE FROM rooms WHERE id=?";
+    global $conn;
+
+    $query = $conn->prepare($insert);
+    $query->bind_param('i', $id);
+    $query->execute();
+
+    $query->close();
+    return true;
+}

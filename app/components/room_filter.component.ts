@@ -5,6 +5,7 @@ import { Http, Headers } from "angular2/http";
 import { RoomPipe } from '../pipes/rooms.pipe';
 import { RoomSizePipe } from '../pipes/room_size.pipe';
 import { RoomBedNumberPipe } from '../pipes/room-bed-number.pipe';
+import { Router } from 'angular2/router';
 
 @Component({
     selector: 'room-filter',
@@ -22,12 +23,23 @@ export class RoomFilterComponent {
     };
     public rooms: Array;
     public hotels: Array;
+    public router: Router;
+    public isAuth: Boolean;
 
-    constructor(http: Http){
+    constructor(http: Http, router: Router){
         this.filter = {
             size: "Any",
             beds: "Any"
         };
+
+        this.router = router;
+        this.router.parent.subscribe((val) => {
+            if(localStorage.getItem('token') !== null){
+                this.isAuth = true;
+            }else{
+                this.isAuth = false;
+            }
+        });
 
         http.get('/app/data/config.json')
             .map(config => config.json())
@@ -51,7 +63,7 @@ export class RoomFilterComponent {
                 });
 
                 this.rooms = newRoomArray;
-                $('table').DataTable();
+                // $('table').DataTable();
             });
     }
 }

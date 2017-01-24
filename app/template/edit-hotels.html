@@ -1,4 +1,116 @@
-<div class="row">
+<div class="row room-filter">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">Reserve a room in one of our beautifull hotels</h2>
+            </div>
+            <div class="panel-body">
+                <table class="display" cellspacing="0" >
+                    <thead>
+                        <tr>
+                            <td>Hotel name</td>
+                            <td>City</td>
+                            <td>Room number</td>
+                            <td>Size</td>
+                            <td>Beds</td>
+                            <td>Change</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="#room of rooms">
+                            <td>{{room.hotel.name}}</td>
+                            <td>{{room.hotel.city}}</td>
+                            <td>{{room.number}}</td>
+                            <td>{{room.size}}</td>
+                            <td>{{room.bedNumber}}</td>
+                            <td><a href="#" (click)="editRoom($event, room.id)">Edit</a> |
+                                <a href="#" (click)="deleteRoom($event, room.id)">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <add-hotel-form></add-hotel-form>
-    <add-room-form></add-room-form>
+    <div class="col-xs-12 col-lg-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Add room</h3>
+            </div>
+            <div class="panel-body">
+                <form id="add-hotel-form" (ngSubmit)="onSubmit()"><br/>
+
+                    <!-- hotel -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Hotel</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <select [(ngModel)]="room.hotelId" style="width: 100%;">
+                                <option *ngFor="#hotel of hotels" value="{{hotel.id}}">{{hotel.name}} - {{hotel.city}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- end hotel -->
+
+                    <!-- number -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Room Number</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <input type="text" name="number" [(ngModel)]="room.number" style="width: 100%;"/>
+                        </div>
+                    </div>
+                    <!-- end number -->
+
+                    <!-- size -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Room size</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <select name="size" [(ngModel)]="room.size" style="width: 100%;">
+                                <option>20</option>
+                                <option>25</option>
+                                <option>30</option>
+                                <option>35</option>
+                                <option>40</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- end size -->
+
+                    <!-- beds -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Number of beds</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <select name="beds" [(ngModel)]="room.bedNumber" style="width: 100%;">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- end beds -->
+
+                    <!-- submit -->
+                    <div class="right-align col-xs-12" style="margin-top: 10px;" *ngIf="isRoomEditing!=true">
+                        <input type="submit" class="btn btn-success" value="Add room"/>
+                    </div>
+                    <!-- end submit -->
+
+                    <!-- submit -->
+                    <div class="right-align col-xs-12" style="margin-top: 10px;" *ngIf="isRoomEditing==true">
+                        <input type="button" class="btn btn-success" value="Clear" (click)="clearRoomEditing($event)"/>
+                        <input type="submit" class="btn btn-success" value="Update room"/>
+                    </div>
+                    <!-- end submit -->
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

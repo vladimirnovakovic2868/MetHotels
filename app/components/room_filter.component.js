@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/mergeMap', "angular2/http", '../pipes/rooms.pipe', '../pipes/room_size.pipe', '../pipes/room-bed-number.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/mergeMap', "angular2/http", '../pipes/rooms.pipe', '../pipes/room_size.pipe', '../pipes/room-bed-number.pipe', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/mergeMap', "angu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, rooms_pipe_1, room_size_pipe_1, room_bed_number_pipe_1;
+    var core_1, http_1, rooms_pipe_1, room_size_pipe_1, room_bed_number_pipe_1, router_1;
     var RoomFilterComponent;
     return {
         setters:[
@@ -30,15 +30,27 @@ System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/mergeMap', "angu
             },
             function (room_bed_number_pipe_1_1) {
                 room_bed_number_pipe_1 = room_bed_number_pipe_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             RoomFilterComponent = (function () {
-                function RoomFilterComponent(http) {
+                function RoomFilterComponent(http, router) {
                     var _this = this;
                     this.filter = {
                         size: "Any",
                         beds: "Any"
                     };
+                    this.router = router;
+                    this.router.parent.subscribe(function (val) {
+                        if (localStorage.getItem('token') !== null) {
+                            _this.isAuth = true;
+                        }
+                        else {
+                            _this.isAuth = false;
+                        }
+                    });
                     http.get('/app/data/config.json')
                         .map(function (config) { return config.json(); })
                         .flatMap(function (config) {
@@ -59,7 +71,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/mergeMap', "angu
                             newRoomArray.push(room);
                         });
                         _this.rooms = newRoomArray;
-                        $('table').DataTable();
+                        // $('table').DataTable();
                     });
                 }
                 RoomFilterComponent = __decorate([
@@ -68,7 +80,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'rxjs/add/operator/mergeMap', "angu
                         pipes: [rooms_pipe_1.RoomPipe, room_size_pipe_1.RoomSizePipe, room_bed_number_pipe_1.RoomBedNumberPipe],
                         templateUrl: '/app/template/room-filter.html'
                     }), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http, router_1.Router])
                 ], RoomFilterComponent);
                 return RoomFilterComponent;
             }());

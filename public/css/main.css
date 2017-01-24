@@ -100,8 +100,10 @@
 
 .room-filter table {
   width: 100%; }
-  .room-filter table tr:nth-child(odd) {
-    background-color: #efefef; }
+  .room-filter table tr {
+    line-height: 1.5em; }
+    .room-filter table tr:nth-child(odd) {
+      background-color: #efefef; }
   .room-filter table thead {
     font-weight: bold; }
 

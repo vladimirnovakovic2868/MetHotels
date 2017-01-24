@@ -40,21 +40,25 @@
 
         </form>
 
-        <table class="display" cellspacing="0">
+        <table class="display" cellspacing="0" >
             <thead>
-                <td>Hotel name</td>
-                <td>City</td>
-                <td>Room number</td>
-                <td>Size</td>
-                <td>Beds</td>
+                <tr>
+                    <td>Hotel name</td>
+                    <td>City</td>
+                    <td>Room number</td>
+                    <td>Size</td>
+                    <td>Beds</td>
+                </tr>
             </thead>
-            <tr *ngFor="#room of rooms | RoomPipe: filter.size: filter.beds">
-                <td>{{room.hotel.name}}</td>
-                <td>{{room.hotel.city}}</td>
-                <td>{{room.number}}</td>
-                <td>{{room.size}}</td>
-                <td>{{room.bedNumber}}</td>
-            </tr>
+            <tbody>
+                <tr *ngFor="#room of rooms | RoomPipe: filter.size: filter.beds">
+                    <td>{{room.hotel.name}}</td>
+                    <td>{{room.hotel.city}}</td>
+                    <td>{{room.number}}</td>
+                    <td>{{room.size}}</td>
+                    <td>{{room.bedNumber}}</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

@@ -26,9 +26,6 @@ import { RegisterPageComponent } from 'app/pages/register_page.component';
     {path:'/register', name:'RegisterPage', component: RegisterPageComponent},
     {path:'/edit-hotels', name:'EditHotelsPage', component: EditHotelsPageComponent},
     {path:'/find-room', name:'FindRoomPage', component: FindRoomPageComponent},
-    // {path:'/aboutus', name:'AboutUs', component: AboutUsComponent},
-    // {path:'/login', name:'LoginPage', component: LoginComponent},
-    // {path:'/allrooms', name:'AllRoomsPage', component: AllRoomsComponent},
 ])
 
 export class AppComponent {
